@@ -1,0 +1,11 @@
+export 'src/document_data.dart';
+export 'src/entity/entity.dart';
+export 'src/entity/entity_converter.dart';
+export 'src/entity/entity_manager.dart';
+export 'src/entity/entity_metadata.dart';
+export 'src/entity/entity_repository.dart';
+export 'src/entity/entity_utils.dart';
+export 'src/entity/n1ql_entity_query_utils.dart';
+export 'src/exceptions.dart';
+export 'src/query_template.dart';
+export 'src/transform_query.dart';

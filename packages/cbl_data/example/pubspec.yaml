@@ -1,0 +1,27 @@
+name: cbl_data_example
+description: Example project which demonstrates how to use cbl_data.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.11.0 <3.0.0'
+  flutter: '>=2.0.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  cbl: ^0.5.0
+  cbl_data:
+    path: ..
+  cbl_flutter: ^0.3.0+5
+  path_provider: ^2.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
