@@ -83,7 +83,11 @@ function _couchbaseLiteCDownloadUrl() {
     local edition="$1"
     local release="$2"
     local target="$3"
-    echo "https://packages.couchbase.com/releases/couchbase-lite-c/$release/couchbase-lite-c-$edition-$release-$target.$(_archiveExt $target)"
+    if [ "$target" = "android" ]; then
+      echo "https://firebasestorage.googleapis.com/v0/b/pics-8f026.appspot.com/o/couchbase-lite-c-enterprise-3.0.0-174-android.zip?alt=media&token=66c002a2-a475-4076-901e-7715f6e77be5"
+    else
+      echo "https://packages.couchbase.com/releases/couchbase-lite-c/$release/couchbase-lite-c-$edition-$release-$target.$(_archiveExt $target)"
+    fi
 }
 
 # Outputs the URL of the archive for the given edition, release and
@@ -116,7 +120,12 @@ tmpDir="$(mktemp -d 2>/dev/null || mktemp -d -t 'cbl_flutter_prebuilt')"
 couchbaseLiteCArchiveFile="$tmpDir/couchbase-lite-c.$(_archiveExt "$target")"
 couchbaseLiteDartArchiveFile="$tmpDir/couchbase-lite-dart.$(_archiveExt "$target")"
 
-curl "https://firebasestorage.googleapis.com/v0/b/pics-8f026.appspot.com/o/couchbase-lite-c-enterprise-3.0.0-174-android.zip?alt=media&token=66c002a2-a475-4076-901e-7715f6e77be5" \
+curl "$(
+    _couchbaseLiteCDownloadUrl \
+        "$COUCHBASE_EDITION" \
+        "$COUCHBASE_LITE_C_RELEASE" \
+        "$target"
+)" \
     --silent \
     --fail \
     --retry 5 \
